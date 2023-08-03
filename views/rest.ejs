@@ -1,0 +1,45 @@
+<script>
+    let txt;
+    window.onload = () => {
+        txt = document.querySelector("#txt");
+    }
+
+    const getFunc = () => {
+        fetch("/test", {method: "get"}) //방식을 설정해줘야 함,{method: "get"}겟 방식으로 요청하겠다
+        .then(res =>{ return res.json(); }) //결과값을 받아올때, 중괄호가 있으면 리턴을 써줘야하고, 업으면 결과값을 바로 리턴으로 주겠다
+        //.then(res => res.json() )
+        .then(data => {
+            console.log(data);
+            txt.innerHTML = data;
+        })
+    }
+    const postFunc = () => {
+        fetch("/test", {method: "post"}) //방식을 설정해줘야 함,{method: "get"}겟 방식으로 요청하겠다
+        .then(res =>{ return res.json(); }) //결과값을 받아올때, 중괄호가 있으면 리턴을 써줘야하고, 업으면 결과값을 바로 리턴으로 주겠다
+        //.then(res => res.json() )
+        .then(data => {
+            console.log(data);
+            txt.innerHTML = data;
+        })
+    }
+    const putFunc = async () => {
+        const res = await fetch("/test", {method: "put"});
+        const data = await res.json();
+        txt.innerHTML = data;
+    }
+    const delFunc = async () => {
+        const res = await fetch("/test", {method: "delete"});
+        const data = await res.json();
+        txt.innerHTML = data;
+    }
+
+</script>
+
+<span id="txt">내용</span> <hr>
+<button type="button" onclick="getFunc()">get</button>
+<button type="button" onclick="postFunc()">post</button>
+<button type="button" onclick="putFunc()">put</button>
+<button type="button" onclick="delFunc()">delete</button>
+
+res.render ==> ejs페이지를 보내줌
+res.json() ==> json형식의 데이터를 보내줌

@@ -1,0 +1,35 @@
+<script>
+    async function test(){
+        const res = await fetch("/get_count") //리스폰스 객체를 쓸때동안 기다리겠다.
+        console.log(res); //esponse {type: 'basic', url: 'http://localhos~
+        const data = await res.json(); //{cnt: 97}//Promise {<pending>}=>아직 결과값이 안들어옴
+        console.log(data); 
+        document.getElementById("cnt").innerHTML = data.cnt;
+
+    }
+
+
+
+    /*
+    function test(){
+        fetch("/get_count") //비동기방식 -> 동기화해야함 //연결이 이루어지고
+        .then(res=>{
+            console.log(res);
+            return res.json(); //응답한 결과를 리턴으로 돌려준다    //json형태로 바꿔줌      //이쪽으로 연동해라
+        })//then를 사용해서
+        .then( data => {
+            console.log("data: ", data); //data:  {cnt: 28}
+            console.log("data.cnt: ", data.cnt); //data.cnt:  28
+            document.getElementById("cnt").innerHTML = data.cnt; //화면 클릭 옆에 숫자 커짐
+        })                                         
+    }*/
+</script>
+<h1>일</h1> <h1>일</h1> <h1>일</h1> <h1>일</h1> 
+<h1>일</h1> <h1>일</h1> <h1>일</h1> <h1>일</h1>
+ <button onclick="test()">클릭</button>
+ <label id="cnt">0</label>
+
+ post 데이터베이스에 데이터를 저장하래때
+ get 디비에서 데이터를 가져올때
+ put 수정
+ delete 삭제
